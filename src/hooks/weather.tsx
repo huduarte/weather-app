@@ -92,7 +92,15 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
   }
 
   return (
-    <WeatherContext.Provider value={{getLocationPermission, getCurrentLocation, updateWeatherData, location, weatherData}}>
+    <WeatherContext.Provider 
+      value={{
+        getLocationPermission, 
+        getCurrentLocation, 
+        updateWeatherData, 
+        location, 
+        weatherData
+      }}
+    >
       {children}
     </WeatherContext.Provider>
   )
