@@ -36,7 +36,6 @@ const Main = ({ navigation }: Props): JSX.Element => {
   const handlePressContinue = async () => {
     setIsLoading(true)
     await getCurrentLocation().then(() => {
-      console.log('a')
       navigation.navigate(RoutesNames.HOME, {day: dayPeriod})
     }).catch(() => {
       Alert.alert('Ops!', 'Houve um problema ao carregar os dados, por favor, tente novamente!')
