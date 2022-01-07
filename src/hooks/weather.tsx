@@ -4,14 +4,13 @@ import * as Location from 'expo-location'
 import { LocationObject } from 'expo-location'
 
 import { api } from '@services/api'
-import { Alert } from 'react-native'
 
 type WeatherData = {
   weather: [
     {
       id: number,
-      main: 'Clear',
-      description: 'clear sky',
+      main: string,
+      description: string,
     }
   ],
   main: {
