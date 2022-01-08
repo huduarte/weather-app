@@ -62,4 +62,5 @@ export const Button = styled.View`
   padding-left: 25px;
   padding-right: 25px;
   margin-top: 10%;
+  padding-bottom: 10%;
 `

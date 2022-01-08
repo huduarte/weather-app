@@ -26,6 +26,7 @@ import { RootStackParamList } from '@routes/stack.routes'
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Alert } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 type MainScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Main'
@@ -66,45 +67,47 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
 
   return (
     <Container type={day} colors={[]}>
-      {!weatherData && (
+      {!weatherData ? (
         <Loader dayPeriod={day} />
-      )}
-      {weatherData && (
-        <Header>
-          <Data>
-            <City>{weatherData.name}</City>
-            <Temperature>
-              <Temp>{convertKelvinToCelsius(weatherData.main.temp)}</Temp>
-              <Celsius>°</Celsius>
-            </Temperature>
-          </Data>
+      ) : (
+        <ScrollView>
+          {weatherData && (
+            <Header>
+              <Data>
+                <City>{weatherData.name}</City>
+                <Temperature>
+                  <Temp>{convertKelvinToCelsius(weatherData.main.temp)}</Temp>
+                  <Celsius>°</Celsius>
+                </Temperature>
+              </Data>
 
-          <Description>{weatherData.weather[0].description}</Description>
-        </Header>
-      )}
+              <Description>{weatherData.weather[0].description}</Description>
+            </Header>
+          )}
 
-      {weatherData && resolvedWeather.animation && 
+          {weatherData && resolvedWeather.animation && 
         <WeatherAnimation 
           source={resolvedWeather.animation} 
           description={resolvedWeather.description} 
         />
-      }
+          }
 
-      {weatherData && (
-        <>
-          <WeatherData>
-            <WeatherCard 
-              humidity={weatherData.main.humidity}
-              pressure={weatherData?.main.pressure}
-              windSpeed={weatherData?.wind.speed}
-            />
-          </WeatherData>
-          <Button>
-            <LargeButton title="Atualizar os dados" type={day} onPress={handlePressUpdateData} />
-          </Button>
-        </>
+          {weatherData && (
+            <>
+              <WeatherData>
+                <WeatherCard 
+                  humidity={weatherData.main.humidity}
+                  pressure={weatherData?.main.pressure}
+                  windSpeed={weatherData?.wind.speed}
+                />
+              </WeatherData>
+              <Button>
+                <LargeButton title="Atualizar os dados" type={day} onPress={handlePressUpdateData} />
+              </Button>
+            </>
+          )}
+        </ScrollView>
       )}
-
     </Container>
   )
 }

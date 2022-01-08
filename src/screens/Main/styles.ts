@@ -20,11 +20,12 @@ export const Header = styled.View`
 
 export const Title = styled.Text`
   color: ${({theme}) => theme.COLORS.TITLE};
-  font-size: 48px;
+  font-size: 38px;
   font-family: ${({theme}) => theme.FONTS.BOLD};
 `
 
 export const Description = styled.Text`
+  padding-top: 10px;
   color: ${({theme}) => theme.COLORS.TITLE};
   font-size: 18px;
   font-family: ${({theme}) => theme.FONTS.REGULAR};
