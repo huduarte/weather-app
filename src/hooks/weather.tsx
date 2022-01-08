@@ -1,10 +1,10 @@
 import React, { createContext, useContext, ReactNode, useState } from 'react'
 
 import * as Location from 'expo-location'
-import { LocationObject } from 'expo-location'
 
 import { api } from '@services/api'
 import { Alert } from 'react-native'
+import { useCallback } from 'react'
 
 type WeatherData = {
   weather: [
@@ -36,14 +36,8 @@ type WeatherData = {
 
 type WeatherContextData = {
   getLocationPermission: () => Promise<void>
-  getCurrentLocation: () => Promise<void | boolean>
+  getCurrentLocation: () => Promise<void>
   updateWeatherData: () => Promise<void>
-  location: {
-    coords: {
-      latitude: number
-      longitude: number
-    }
-  }
   weatherData: WeatherData | undefined
 }
 
@@ -54,42 +48,42 @@ type WeatherProviderProps = {
 export const WeatherContext = createContext({} as WeatherContextData)
 
 const WeatherProvider = ({ children }: WeatherProviderProps) => {
-  const [location, setLocation] = useState<LocationObject>({} as LocationObject)
   const [weatherData, setWeatherData] = useState()
 
-  const getLocationPermission = async () => {
+  const getLocationPermission = useCallback(async () => {
     const { status } = await Location.requestForegroundPermissionsAsync()
     if (status !== 'granted') {
       return Alert.alert('Permissão negada', 'As permissões de localização precisam estar ativas para começarmos')
     }
-  }
+  }, [])
 
-  const getCurrentLocation = async () => {
+  const getCurrentLocation = useCallback(async () => {
     try {
       const location = await Location.getCurrentPositionAsync({})
       Location.watchPositionAsync.bind(null, {})
-      setLocation(location)
+
       const response = await api
         .get(`/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&lang=pt_br&appid=bb7a79925b6a3ce62d23591cff48db10`)
       setWeatherData(response.data)
-    } catch {
+    } catch (error) {
+      console.log(error)
       throw new Error('Erro ao buscar dados')
     }
-  }
+  }, [])
 
-  const updateWeatherData = async () => {
+  const updateWeatherData = useCallback(async () => {
     setWeatherData(undefined)
 
     try {
+      const location = await Location.getCurrentPositionAsync({})
+      Location.watchPositionAsync.bind(null, {})
       const response = await api
         .get(`/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&lang=pt_br&appid=bb7a79925b6a3ce62d23591cff48db10`)
       setWeatherData(response.data)
     } catch {
       throw new Error('Erro ao buscar dados')
     }
-
-
-  }
+  }, [])
 
   return (
     <WeatherContext.Provider 
@@ -97,7 +91,6 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
         getLocationPermission, 
         getCurrentLocation, 
         updateWeatherData, 
-        location, 
         weatherData
       }}
     >
