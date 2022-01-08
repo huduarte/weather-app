@@ -24,6 +24,7 @@ module.exports = {
     semi: ['error', 'never'],
     'no-undef': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-empty-interface': 'off'
+    '@typescript-eslint/no-empty-interface': 'off',
+    'no-useless-escape': 'off'
   },
 }
