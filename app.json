@@ -1,6 +1,11 @@
 {
   "expo": {
     "name": "weather-app",
+    "icon": "./src/assets/adaptative-weather-icon.png",
+    "splash": {
+      "image": "./src/assets/weather-splash.png",
+      "backgroundColor": "#010057"
+    },
     "slug": "weather-app",
     "version": "1.0.0",
     "assetBundlePatterns": [
