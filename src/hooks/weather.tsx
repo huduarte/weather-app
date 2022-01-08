@@ -4,6 +4,7 @@ import * as Location from 'expo-location'
 import { LocationObject } from 'expo-location'
 
 import { api } from '@services/api'
+import { Alert } from 'react-native'
 
 type WeatherData = {
   weather: [
@@ -59,7 +60,7 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
   const getLocationPermission = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync()
     if (status !== 'granted') {
-      return
+      return Alert.alert('Permissão negada', 'As permissões de localização precisam estar ativas para começarmos')
     }
   }
 
