@@ -27,9 +27,9 @@ import { RootStackParamList } from '@routes/stack.routes'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { Alert } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-type MainScreenNavigationProp = NativeStackNavigationProp<
+type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'Main'
+  'Home'
 >;
 
 type Props = {
@@ -38,7 +38,7 @@ type Props = {
       day: 'day' | 'night'
     }
   }
-  navigation: MainScreenNavigationProp;
+  navigation: HomeScreenNavigationProp;
 };
 
 const Home = ({ route, navigation }: Props): JSX.Element => {
@@ -86,10 +86,10 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
           )}
 
           {weatherData && resolvedWeather.animation && 
-        <WeatherAnimation 
-          source={resolvedWeather.animation} 
-          description={resolvedWeather.description} 
-        />
+            <WeatherAnimation 
+              source={resolvedWeather.animation} 
+              description={resolvedWeather.description} 
+            />
           }
 
           {weatherData && (
@@ -102,7 +102,7 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
                 />
               </WeatherData>
               <Button>
-                <LargeButton title="Atualizar os dados" type={day} onPress={handlePressUpdateData} />
+                <LargeButton title="Atualizar os dados" testID={'home-button'} type={day} onPress={handlePressUpdateData} />
               </Button>
             </>
           )}
