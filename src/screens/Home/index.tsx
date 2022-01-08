@@ -42,7 +42,6 @@ type Props = {
 
 const Home = ({ route, navigation }: Props): JSX.Element => {
   const [resolvedWeather, setResolvedWeather] = useState({} as IResolveWeather)
-  const [dayPeriod, setDayPeriod] = useState<'day' | 'night'>('day')
 
   const {day} = route.params
 
@@ -50,10 +49,6 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
     weatherData,
     updateWeatherData
   } = useWeather()
-
-  useEffect(() => {
-    setDayPeriod(day)
-  }, [])
 
   const handlePressUpdateData = async () => {
     updateWeatherData().catch(() =>{
@@ -64,15 +59,15 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
 
   useEffect(() => {
     if(weatherData){
-      const resolvedWeather = ResolveWeather(weatherData?.weather[0]?.id, dayPeriod)
+      const resolvedWeather = ResolveWeather(weatherData?.weather[0]?.id, day)
       setResolvedWeather(resolvedWeather)
     }
   }, [weatherData])
 
   return (
-    <Container type={dayPeriod} colors={[]}>
+    <Container type={day} colors={[]}>
       {!weatherData && (
-        <Loader dayPeriod={dayPeriod} />
+        <Loader dayPeriod={day} />
       )}
       {weatherData && (
         <Header>
@@ -105,7 +100,7 @@ const Home = ({ route, navigation }: Props): JSX.Element => {
             />
           </WeatherData>
           <Button>
-            <LargeButton title="Atualizar os dados" type={dayPeriod} onPress={handlePressUpdateData} />
+            <LargeButton title="Atualizar os dados" type={day} onPress={handlePressUpdateData} />
           </Button>
         </>
       )}
