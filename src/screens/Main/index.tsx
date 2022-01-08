@@ -3,6 +3,9 @@ import LargeButton from '@components/LargeButton'
 import Loader from '@components/Loader'
 import { getDayPeriod } from '@utils/getDayPeriod'
 
+import WeatherAnimation from '@components/WeatherAnimation'
+import map from '@assets/map.json'
+
 import {
   Container,
   Header,
@@ -32,6 +35,7 @@ type Props = {
 const Main = ({ navigation }: Props): JSX.Element => {
   const [isLoading, setIsLoading] = useState(false)
   const [dayPeriod, setDayPeriod] = useState<'day' | 'night'>('day')
+  const [startAnimation, setStartAnimation] = useState(false)
 
   const handlePressContinue = async () => {
     setIsLoading(true)
@@ -59,7 +63,7 @@ const Main = ({ navigation }: Props): JSX.Element => {
     const hour = new Date().getHours()
     const dayPeriod = getDayPeriod(hour)
     setDayPeriod(dayPeriod)
-
+    setStartAnimation(true)
   }, [])
 
   return (
@@ -69,14 +73,17 @@ const Main = ({ navigation }: Props): JSX.Element => {
       ) : (
         <>
           <Header>
-            <Title>Bem-vindo (a)!</Title>
+            <Title testID="title">Bem-vindo (a)!</Title>
             <Description>Clique no botão abaixo e veja as informações sobre o clima da sua localidade</Description>
           </Header>
 
-          <Button>
-            <LargeButton title="Começar" type={dayPeriod} onPress={handlePressContinue}/>
-          </Button>
+          {startAnimation && (
+            <WeatherAnimation source={map} />
+          )}
 
+          <Button>
+            <LargeButton title="Começar" type={dayPeriod} onPress={handlePressContinue} testID="main-button" />
+          </Button>
 
           <Footer>
             <Description>Não esqueça de permitir o acesso a sua localização atual.</Description>
