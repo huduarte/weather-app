@@ -66,7 +66,6 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
         .get(`/data/2.5/weather?lat=${location.coords.latitude}&lon=${location.coords.longitude}&lang=pt_br&appid=bb7a79925b6a3ce62d23591cff48db10`)
       setWeatherData(response.data)
     } catch (error) {
-      console.log(error)
       throw new Error('Erro ao buscar dados')
     }
   }, [])
