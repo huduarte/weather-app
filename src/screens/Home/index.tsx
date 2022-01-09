@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react'
 
+import { Alert } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
 import {
   Container, 
   City, 
@@ -24,9 +28,6 @@ import { useWeather } from '@hooks/weather'
 
 import { RootStackParamList } from '@routes/stack.routes'
 
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Alert } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Home'

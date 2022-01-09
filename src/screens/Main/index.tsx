@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import LargeButton from '@components/LargeButton'
-import Loader from '@components/Loader'
-import { getDayPeriod } from '@utils/getDayPeriod'
 
-import WeatherAnimation from '@components/WeatherAnimation'
+import { Alert } from 'react-native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
 import map from '@assets/map.json'
 
 import {
@@ -15,14 +14,18 @@ import {
   Footer,
 } from './styles'
 
+import LargeButton from '@components/LargeButton'
+import Loader from '@components/Loader'
+import { getDayPeriod } from '@utils/getDayPeriod'
+
+import WeatherAnimation from '@components/WeatherAnimation'
+
 import { useWeather } from '@hooks/weather'
 
 import { RoutesNames } from '@utils/enum'
 
 import { RootStackParamList } from '@routes/stack.routes'
 
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Alert } from 'react-native'
 type MainScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'Main'
