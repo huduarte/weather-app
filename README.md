@@ -48,3 +48,7 @@
 # Melhorias: 
 - Melhorar responsividade em dispositivos menores
 - Biblioteca de localização apresenta problema em alguns dispostivos antigos
+# Documentação:
+[Notion](https://huduarte.notion.site/Documenta-o-Weather-App-09f718744b5b4c2ca84b9bd2376e9754)
+
+[Miro](https://miro.com/app/board/uXjVOXYU494=/?invite_link_id=428405777591)
