@@ -14,7 +14,7 @@ interface IWeatherAnimationProps {
 }
 
 const WeatherAnimation = ({ source, description }: IWeatherAnimationProps): JSX.Element => {
-  const animationRef = useRef<LottieView | null>() // The <> is for TypeScript, but can be removed for JavaScript
+  const animationRef = useRef<LottieView | null>()
 
   useEffect(() => {
     animationRef.current?.play()
