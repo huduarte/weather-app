@@ -17,6 +17,8 @@
 
 ![Resultado final](.github/weather-app-night.gif)
 
+- Caso tenha problemas para visualizar, segue link no notion com resultado final:
+[Resultado Final](https://huduarte.notion.site/Resultado-final-Weather-App-65da8034ab92472890a5f175ffcca88f)
 
 # Tecnologias utilizadas:
 - Expo BareWorkflow
