@@ -1,12 +1,12 @@
 
-# ⚡ Teste técnico Builders - Weather App ⚡
+# ⚡ Weather App ⚡
 
 <h1 align="center">
-  <img alt="Platform Builders" title="Platform Builders" src=".github/builders.jpeg" />
+  <img alt="Weather App" title="Weather App" src="./src/assets/adaptative-weather-icon.png" width="200" />
 </h1>
 
 # Definição:
-- Desenvolver um aplicativo que consuma a localização do usuário e exiba na interface o endereço atual os dados climáticos da região e um botão para atualizar os dados.
+- Weather app é um aplicativo que consume a localização do usuário e exibe na interface o endereço atual os dados climáticos da região.
 
 # Resultado:
 
