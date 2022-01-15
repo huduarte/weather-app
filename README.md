@@ -1,7 +1,7 @@
 
 # ⚡ Weather App ⚡
 
-<h1 align="center">
+<h1>
   <img alt="Weather App" title="Weather App" src="./src/assets/adaptative-weather-icon.png" width="200" />
 </h1>
 
