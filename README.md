@@ -6,7 +6,7 @@
 </h1>
 
 # Definição:
-- Weather app é um aplicativo que consume a localização do usuário e exibe na interface o endereço atual os dados climáticos da região.
+- Weather app é um aplicativo que consume a localização do usuário e exibe na interface o endereço atual os dados climáticos da região a partir da api pública do open weather.
 
 # Resultado:
 
